@@ -18,20 +18,16 @@ public class Splash extends AppCompatActivity {
         getSupportActionBar().hide();
 
         SharedPreferences SP = getSharedPreferences("First Open", MODE_PRIVATE);
-
-
         TimerTask timer = new TimerTask() {
             @Override
             public void run() {
 
                 if (SP.getBoolean("opened", false)) {
                     startActivity(new Intent(Splash.this, MainActivity.class));
-
                 } else {
                     startActivity(new Intent(Splash.this, OnboardingActivity.class));
                     SP.edit().putBoolean("opened", true).apply();
                 }
-
 
 
             }
