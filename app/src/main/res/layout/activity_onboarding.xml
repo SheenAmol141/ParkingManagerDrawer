@@ -11,7 +11,7 @@
         android:id="@+id/vpOnboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/teal_200"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -33,13 +33,15 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
+            android:id="@+id/arrow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="13dp"
-            android:src="@drawable/baseline_arrow_right_24"
+            android:src="@drawable/baseline_chevron_right_24"
             app:tint="@color/white" />
     </androidx.cardview.widget.CardView>
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
+        android:id="@+id/dots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
