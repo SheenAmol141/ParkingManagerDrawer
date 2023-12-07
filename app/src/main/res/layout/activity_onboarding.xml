@@ -27,9 +27,22 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/arrow_right"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/baseline_arrow_right_24"
+            android:padding="13dp"
+            app:tint="@color/white"/>
     </androidx.cardview.widget.CardView>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/cdNextOnboard"
+        app:layout_constraintTop_toTopOf="@id/cdNextOnboard"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="30dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
