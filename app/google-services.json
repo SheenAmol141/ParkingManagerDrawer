@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "892184726685",
+    "project_id": "parking-manager-drawer-sheen",
+    "storage_bucket": "parking-manager-drawer-sheen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892184726685:android:a177bdc8134b67ea569874",
+        "android_client_info": {
+          "package_name": "com.sheenjoshuaamol.parkingmanagerdrawer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAe6NBKAezX2u_bB1eyPQechFvVcvtK0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

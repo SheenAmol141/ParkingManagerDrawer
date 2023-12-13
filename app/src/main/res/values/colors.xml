@@ -8,5 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#C5C5C5</color>
+
     <color name="mainblue">#12263a</color>
+    <color name="subblue">#06BCC1</color>
+    <color name="ashgrey">#C5D8D1</color>
+    <color name="isabelline">#F4EDEA</color>
+    <color name="lightorange">#F4D1AE</color>
 </resources>

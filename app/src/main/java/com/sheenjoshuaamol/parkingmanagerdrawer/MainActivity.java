@@ -1,10 +1,14 @@
 package com.sheenjoshuaamol.parkingmanagerdrawer;
 
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
 
+import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -15,12 +19,15 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.Firebase;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.sheenjoshuaamol.parkingmanagerdrawer.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
+    private FirebaseAnalytics mFirebaseAnalytics;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    String TAG = "TEST";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +36,25 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+
+
+
+
+        //SWITCHMODE -----------
+        findViewById(R.id.footer_item_1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: Yes");
+                bundle.putString("yes", "yes");
+                mFirebaseAnalytics.logEvent("testswitch",  null);
+                startActivity(new Intent(MainActivity.this, SwitchMode.class));
+            }
+        });
+        //SWITCHMODE -----------
         setSupportActionBar(binding.appBarMain.toolbar);
+
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -63,4 +89,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,17 +18,28 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
 
+
         SharedPreferences SP = getSharedPreferences("First Open", MODE_PRIVATE);
+
+        SharedPreferences Sa = getSharedPreferences("SwitchCheck", MODE_PRIVATE);
+        Log.d("Testswitch", "onCreate: "+Sa.getInt("Switch", 3));
+
         TimerTask timer = new TimerTask() {
             @Override
             public void run() {
 
-                if (SP.getBoolean("opened", false)) {
-                    startActivity(new Intent(Splash.this, MainActivity.class));
-                } else {
-                    startActivity(new Intent(Splash.this, OnboardingActivity.class));
-                    SP.edit().putBoolean("opened", true).apply();
-                }
+
+                    if (Sa.getInt("Switch", 3) == 1) {
+
+                    } else if (Sa.getInt("Switch", 3) == 0) {
+                        startActivity(new Intent(Splash.this, MainActivity.class));
+                    } else {
+                        startActivity(new Intent(Splash.this, SwitchMode.class));
+                        SP.edit().putBoolean("opened", true).apply();
+                    }
+
+
+
 
 
             }

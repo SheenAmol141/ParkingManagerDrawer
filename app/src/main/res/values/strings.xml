@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Parking Manager  Drawer</string>
+    <string name="app_name">Parking Manager</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -10,6 +10,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+
+    <!-- SWITCH -->
+    <string name="Switch">Are you an</string>
+    <string name="or">or a</string>
+    <string name="op">Operator?</string>
+    <string name="cust">Customer?</string>
 
     <!--  ONBOARDING -->
     <string name="onboard_title_1">Title 1</string>

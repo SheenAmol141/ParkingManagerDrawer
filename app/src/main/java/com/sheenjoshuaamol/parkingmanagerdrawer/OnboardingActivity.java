@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -24,6 +25,8 @@ public class OnboardingActivity extends AppCompatActivity {
     CardView nextBT;
     private LinearLayout dotslayout;
     private ImageView arrow;
+
+    SharedPreferences SP = getSharedPreferences("SwitchCheck", MODE_PRIVATE);
 
 
 
@@ -73,7 +76,7 @@ public class OnboardingActivity extends AppCompatActivity {
                         if (position < 2) {
                             pager.setCurrentItem(position + 1, true);
                         } else {
-                            startActivity(new Intent(OnboardingActivity.this, MainActivity.class));
+                            startActivity(new Intent(OnboardingActivity.this, SwitchMode.class));
                             finish();
                         }
                     }
@@ -100,7 +103,7 @@ public class OnboardingActivity extends AppCompatActivity {
             for (int i = 0; i < dots.length ; i ++) {
                 dots[i] = new TextView(this);
                 dots[i].setText(Html.fromHtml("."));
-                dots[i].setTextColor(getColor(R.color.grey));
+                dots[i].setTextColor(getColor(R.color.ashgrey));
                 dots[i].setTextSize(100);
                 dotslayout.addView(dots[i]);
             }
