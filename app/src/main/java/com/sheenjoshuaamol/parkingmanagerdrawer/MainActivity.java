@@ -4,6 +4,7 @@ package com.sheenjoshuaamol.parkingmanagerdrawer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -39,20 +41,6 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
 
-
-
-
-        //SWITCHMODE -----------
-        findViewById(R.id.footer_item_1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: Yes");
-                bundle.putString("yes", "yes");
-                mFirebaseAnalytics.logEvent("testswitch",  null);
-                startActivity(new Intent(MainActivity.this, SwitchMode.class));
-            }
-        });
-        //SWITCHMODE -----------
         setSupportActionBar(binding.appBarMain.toolbar);
 
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +62,21 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        //SWITCHMODE -----------
+
+        navigationView.getMenu().findItem(R.id.switchmode).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                Log.d(TAG, "onClick: Yes");
+                bundle.putString("yes", "yes");
+                mFirebaseAnalytics.logEvent("testswitch",  null);
+                startActivity(new Intent(MainActivity.this, SwitchMode.class));
+                return false;
+            }
+        });
+        //SWITCHMODE -----------
     }
 
     @Override

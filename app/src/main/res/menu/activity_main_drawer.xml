@@ -16,9 +16,16 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/switchmode"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="switch mode" />
     </group>
+    <item android:title="Options">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/switchmode"
+                    android:icon="@drawable/baseline_supervisor_account_24"
+                    android:title="Switch Mode"
+                    />
+            </group>
+        </menu>
+    </item>
 </menu>
