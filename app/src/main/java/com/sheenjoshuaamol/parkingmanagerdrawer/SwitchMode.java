@@ -9,9 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class SwitchMode extends AppCompatActivity {
     Button op;
     Button cust;
+    FirebaseAnalytics analytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,7 @@ public class SwitchMode extends AppCompatActivity {
         //IMPORTANT
         setContentView(R.layout.activity_switch_mode);
         //IMPORTANT
+        analytics = FirebaseAnalytics.getInstance(this);
 
 
 
@@ -33,8 +37,10 @@ public class SwitchMode extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Operate", "OP");
+                startActivity(new Intent(SwitchMode.this, RegisterAccount.class));
                 SP.edit().putInt("Switch", 1).apply();
                 Log.d("Testswitch", "onCreate: "+SP.getInt("Switch", 3));
+                analytics.logEvent("OPERATOR_MODE", null);
             }
         });
         cust.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +50,7 @@ public class SwitchMode extends AppCompatActivity {
                 startActivity(new Intent(SwitchMode.this, MainActivity.class));
                 SP.edit().putInt("Switch", 0).apply();
                 Log.d("Testswitch", "onCreate: "+SP.getInt("Switch", 3));
+                analytics.logEvent("CUSTOMER_MODE", null);
             }
         });
 

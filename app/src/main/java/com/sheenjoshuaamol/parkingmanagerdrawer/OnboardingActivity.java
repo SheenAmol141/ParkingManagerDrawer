@@ -26,7 +26,7 @@ public class OnboardingActivity extends AppCompatActivity {
     private LinearLayout dotslayout;
     private ImageView arrow;
 
-    SharedPreferences SP = getSharedPreferences("SwitchCheck", MODE_PRIVATE);
+
 
 
 

@@ -26,4 +26,12 @@
     <string name="onboard_desc_1">DESC 1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed velit sagittis dui venenatis bibendum eget non lectus. In dolor mauris, molestie sit amet elit a, placerat feugiat erat. Etiam sollicitudin eleifend sapien id vulputate. Sed ut dolor ut dolor lobortis hendrerit at id magna. </string>
     <string name="onboard_desc_2">DESC 2Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed velit sagittis dui venenatis bibendum eget non lectus. In dolor mauris, molestie sit amet elit a, placerat feugiat erat. Etiam sollicitudin eleifend sapien id vulputate. Sed ut dolor ut dolor lobortis hendrerit at id magna. </string>
     <string name="onboard_desc_3">DESC 3Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed velit sagittis dui venenatis bibendum eget non lectus. In dolor mauris, molestie sit amet elit a, placerat feugiat erat. Etiam sollicitudin eleifend sapien id vulputate. Sed ut dolor ut dolor lobortis hendrerit at id magna. </string>
+    <string name="add_an_operator_account">Add an Operator Account</string>
+    <string name="insert_master_password">INSERT MASTER PASSWORD</string>
+    <string name="add_account">Add Account</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="pas_sword">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="login_as_operator">Login as Operator</string>
 </resources>

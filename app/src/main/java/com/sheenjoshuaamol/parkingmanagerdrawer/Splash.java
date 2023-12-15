@@ -30,11 +30,11 @@ public class Splash extends AppCompatActivity {
 
 
                     if (Sa.getInt("Switch", 3) == 1) {
-
+                        startActivity(new Intent(Splash.this, RegisterAccount.class));
                     } else if (Sa.getInt("Switch", 3) == 0) {
                         startActivity(new Intent(Splash.this, MainActivity.class));
                     } else {
-                        startActivity(new Intent(Splash.this, SwitchMode.class));
+                        startActivity(new Intent(Splash.this, OnboardingActivity.class));
                         SP.edit().putBoolean("opened", true).apply();
                     }
 
