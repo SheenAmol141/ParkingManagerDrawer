@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,9 +35,6 @@ public class LoginAccount extends AppCompatActivity {
 
 
 
-
-
-
     @Override
     public void onStart() {
         super.onStart();
@@ -44,12 +42,8 @@ public class LoginAccount extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             Toast.makeText(this, "ALREADY LOGGED IN!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent());
         }
     }
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +60,7 @@ public class LoginAccount extends AppCompatActivity {
         load = findViewById(R.id.progressBar2);
 
 
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,8 +69,6 @@ public class LoginAccount extends AppCompatActivity {
 
                 inpemail = String.valueOf(email.getText());
                 inppassword = String.valueOf(password.getText());
-
-
 
                 if (TextUtils.isEmpty(inpemail)) {
                     Toast.makeText(LoginAccount.this, "Please input your Email", Toast.LENGTH_SHORT).show();

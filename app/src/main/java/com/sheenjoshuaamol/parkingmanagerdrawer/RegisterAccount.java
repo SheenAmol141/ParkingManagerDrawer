@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -87,7 +88,7 @@ public class RegisterAccount extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success
                                         analytics.logEvent("createUserWithEmail_success", null);
-                                        Toast.makeText(RegisterAccount.this, "Registered Successfully, redirecting to Login Screen", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterAccount.this, "Registered Successfully, redirecting to Operator Screen", Toast.LENGTH_SHORT).show();
 
                                         TimerTask timer = new TimerTask() {
                                             @Override
@@ -106,23 +107,8 @@ public class RegisterAccount extends AppCompatActivity {
                                 }
                             });
 
-
-
-
-
-
-
-
-
-
                 }
             }
-
-
-
-
-
-
 
 
 
