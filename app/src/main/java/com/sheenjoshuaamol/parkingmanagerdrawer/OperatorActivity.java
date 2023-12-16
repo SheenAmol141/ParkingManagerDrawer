@@ -3,6 +3,7 @@ package com.sheenjoshuaamol.parkingmanagerdrawer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -14,12 +15,14 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.sheenjoshuaamol.parkingmanagerdrawer.databinding.ActivityOperatorBinding;
 
 public class OperatorActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityOperatorBinding binding;
+    TextView email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,9 @@ public class OperatorActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_operator);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        email = navigationView.getHeaderView(0).findViewById(R.id.tvEmail);
+        email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     }
 
     @Override
