@@ -35,7 +35,7 @@ public class LoginAccount extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseAnalytics analytics;
     EditText email, password;
-    Button submit;
+    Button submit, register;
     ProgressBar load;
 
 
@@ -63,8 +63,23 @@ public class LoginAccount extends AppCompatActivity {
         password = findViewById(R.id.etLoginPassword);
         submit = findViewById(R.id.submit);
         load = findViewById(R.id.progressBar2);
+        register = findViewById(R.id.register);
 
 
+
+
+        findViewById(R.id.switchmode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginAccount.this, SwitchMode.class));
+            }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginAccount.this, RegisterAccount.class));
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

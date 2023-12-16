@@ -1,7 +1,9 @@
 package com.sheenjoshuaamol.parkingmanagerdrawer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -63,6 +66,21 @@ public class OperatorActivity extends AppCompatActivity {
         } catch (Exception e){
             Log.d("TAG", "onCreate: " + e);
         }
+
+
+
+
+        //SWITCHMODE -----------
+
+        navigationView.getMenu().findItem(R.id.switchmode).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                startActivity(new Intent(OperatorActivity.this, SwitchMode.class));
+                FirebaseAuth.getInstance().signOut();
+                return false;
+            }
+        });
+        //SWITCHMODE -----------
     }
 
     @Override

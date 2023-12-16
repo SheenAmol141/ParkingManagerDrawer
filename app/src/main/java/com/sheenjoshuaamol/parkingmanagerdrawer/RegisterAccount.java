@@ -50,6 +50,18 @@ public class RegisterAccount extends AppCompatActivity {
         load = findViewById(R.id.progressBar);
 
 
+        findViewById(R.id.switchmode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterAccount.this, SwitchMode.class));
+            }
+        });
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterAccount.this, LoginAccount.class));
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

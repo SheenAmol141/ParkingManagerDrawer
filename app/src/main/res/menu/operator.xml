@@ -17,4 +17,14 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
     </group>
+    <item android:title="Settings">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/switchmode"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="@string/switch_mode" />
+            </group>
+        </menu>
+    </item>
 </menu>

@@ -37,7 +37,7 @@ public class SwitchMode extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Operate", "OP");
-                startActivity(new Intent(SwitchMode.this, RegisterAccount.class));
+                startActivity(new Intent(SwitchMode.this, LoginAccount.class));
                 SP.edit().putInt("Switch", 1).apply();
                 Log.d("Testswitch", "onCreate: "+SP.getInt("Switch", 3));
                 analytics.logEvent("OPERATOR_MODE", null);

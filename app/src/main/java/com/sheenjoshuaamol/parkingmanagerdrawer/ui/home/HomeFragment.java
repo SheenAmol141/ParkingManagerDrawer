@@ -31,8 +31,8 @@ public class HomeFragment extends Fragment {
 
 
     private FragmentHomeBinding binding;
-    private static final String KEY_CODE = "Parking Spot Code";
-    private static final String KEY_NAME = "Name";
+    private static final String KEY_CODE = "code";
+    private static final String KEY_NAME = "name";
     private static final String KEY_PLATE = "Plate Number";
     private static final String KEY_TIME = "Time Entered";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -77,6 +77,7 @@ public class HomeFragment extends Fragment {
 
         Map<String, Object> lot = new HashMap<>();
 
+        lot.put(KEY_CODE, code);
         lot.put(KEY_NAME, name);
         lot.put("Occupied", true);
         lot.put(KEY_PLATE, plate);
@@ -90,7 +91,7 @@ public class HomeFragment extends Fragment {
         record.put(KEY_NAME, name);
         record.put(KEY_CODE, code);
         record.put(KEY_PLATE, plate);
-        record.put(KEY_TIME, current);
+//        record.put(KEY_TIME, format.format(current).toString());
 
         db.collection("PARKING").document(code).set(lot).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
