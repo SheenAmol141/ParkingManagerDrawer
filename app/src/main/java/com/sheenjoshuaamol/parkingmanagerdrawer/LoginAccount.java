@@ -39,14 +39,12 @@ public class LoginAccount extends AppCompatActivity {
     ProgressBar load;
 
 
-
-
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             Toast.makeText(this, "ALREADY LOGGED IN!", Toast.LENGTH_SHORT).show();
             FirebaseAuth.getInstance().signOut();
         }
@@ -67,7 +65,6 @@ public class LoginAccount extends AppCompatActivity {
         load = findViewById(R.id.progressBar2);
 
 
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,40 +83,34 @@ public class LoginAccount extends AppCompatActivity {
                     //FIREBASEAUTH BOILERPLATE HERE
 
 
-                    mAuth.signInWithEmailAndPassword(inpemail, inppassword)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        // Sign in success, update UI with the signed-in user's information
-                                        analytics.logEvent("logInWithEmail_success", null);
-
-
-                                        new Timer().schedule(new TimerTask() {
-                                            @Override
-                                            public void run() {
-                                                startActivity(LoginAccount.this, OperatorActivity.class);
-                                            }
-                                        }, 2000);
-                                        Toast.makeText(LoginAccount.this, "Log In success.", Toast.LENGTH_SHORT).show();
-                                        load.setVisibility(View.INVISIBLE);
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        analytics.logEvent("logInWithEmail_failure", null);
-                                        Toast.makeText(LoginAccount.this, "Log In failed.", Toast.LENGTH_SHORT).show();
+                    mAuth.signInWithEmailAndPassword(inpemail, inppassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                analytics.logEvent("logInWithEmail_success", null);
+                                Toast.makeText(LoginAccount.this, "Log In success, redirecting to Operator Screen", Toast.LENGTH_SHORT).show();
+                                new Timer().schedule(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        startActivity(new Intent(LoginAccount.this, OperatorActivity.class));
                                         load.setVisibility(View.INVISIBLE);
                                     }
-                                }
-                            });
+                                }, 2000);
 
-
-
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                analytics.logEvent("logInWithEmail_failure", null);
+                                Toast.makeText(LoginAccount.this, "Log In failed.", Toast.LENGTH_SHORT).show();
+                                load.setVisibility(View.INVISIBLE);
+                            }
+                        }
+                    });
 
 
                 }
             }
         });
-
 
 
     }

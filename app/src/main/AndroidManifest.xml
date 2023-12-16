@@ -15,6 +15,11 @@
         android:theme="@style/Theme.ParkingManagerDrawer"
         tools:targetApi="31">
         <activity
+            android:name=".OperatorActivity"
+            android:exported="false"
+            android:label="@string/title_activity_operator"
+            android:theme="@style/Theme.ParkingManagerDrawer.NoActionBar" />
+        <activity
             android:name=".LoginAccount"
             android:exported="false" />
         <activity

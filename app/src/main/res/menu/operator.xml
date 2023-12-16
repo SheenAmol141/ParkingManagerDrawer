@@ -17,15 +17,4 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
     </group>
-    <item android:title="@string/options">
-        <menu>
-            <group>
-                <item
-                    android:id="@+id/switchmode"
-                    android:icon="@drawable/baseline_supervisor_account_24"
-                    android:title="@string/switch_mode"
-                    />
-            </group>
-        </menu>
-    </item>
 </menu>
