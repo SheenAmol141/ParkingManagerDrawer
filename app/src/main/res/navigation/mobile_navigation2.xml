@@ -22,4 +22,9 @@
         android:name="com.sheenjoshuaamol.parkingmanagerdrawer.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/parkListFragment"
+        android:name="com.sheenjoshuaamol.parkingmanagerdrawer.ui.parklist.ParkListFragment"
+        android:label="fragment_park_list"
+        tools:layout="@layout/fragment_park_list" />
 </navigation>
