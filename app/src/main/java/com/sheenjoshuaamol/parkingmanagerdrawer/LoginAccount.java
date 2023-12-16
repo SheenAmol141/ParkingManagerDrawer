@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import com.google.android.material.badge.BadgeUtils;
+
+import org.w3c.dom.Text;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LoginAccount extends AppCompatActivity {
 
@@ -42,6 +48,7 @@ public class LoginAccount extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             Toast.makeText(this, "ALREADY LOGGED IN!", Toast.LENGTH_SHORT).show();
+            FirebaseAuth.getInstance().signOut();
         }
     }
 
@@ -86,6 +93,14 @@ public class LoginAccount extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
                                         analytics.logEvent("logInWithEmail_success", null);
+
+
+                                        new Timer().schedule(new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                startActivity(LoginAccount.this, OperatorActivity.class);
+                                            }
+                                        }, 2000);
                                         Toast.makeText(LoginAccount.this, "Log In success.", Toast.LENGTH_SHORT).show();
                                         load.setVisibility(View.INVISIBLE);
                                     } else {
