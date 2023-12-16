@@ -1,6 +1,7 @@
 package com.sheenjoshuaamol.parkingmanagerdrawer;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -17,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.sheenjoshuaamol.parkingmanagerdrawer.databinding.ActivityOperatorBinding;
+import com.sheenjoshuaamol.parkingmanagerdrawer.ui.home.HomeFragment;
+import com.sheenjoshuaamol.parkingmanagerdrawer.ui.parklist.ParkListFragment;
 
 public class OperatorActivity extends AppCompatActivity {
 
@@ -52,46 +57,12 @@ public class OperatorActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        email = navigationView.getHeaderView(0).findViewById(R.id.tvEmail);
-        email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        try {
+            email = navigationView.getHeaderView(0).findViewById(R.id.tvEmail);
+            email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        } catch (Exception e){
+            Log.d("TAG", "onCreate: " + e);
+        }
     }
 
     @Override

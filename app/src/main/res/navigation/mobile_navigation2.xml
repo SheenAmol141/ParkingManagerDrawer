@@ -3,13 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@+id/nav_home">
-
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.sheenjoshuaamol.parkingmanagerdrawer.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@+id/parkListFragment">
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -25,6 +19,6 @@
     <fragment
         android:id="@+id/parkListFragment"
         android:name="com.sheenjoshuaamol.parkingmanagerdrawer.ui.parklist.ParkListFragment"
-        android:label="fragment_park_list"
+        android:label="Parked List"
         tools:layout="@layout/fragment_park_list" />
 </navigation>

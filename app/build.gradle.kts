@@ -66,6 +66,8 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
 
     implementation("com.google.firebase:firebase-analytics")
+    // FirebaseUI for Cloud Firestore
+    implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
 
 
     // Add the dependencies for any other desired Firebase products

@@ -16,20 +16,28 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sheenjoshuaamol.parkingmanagerdrawer.R;
 import com.sheenjoshuaamol.parkingmanagerdrawer.databinding.FragmentHomeBinding;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
+
+
     private FragmentHomeBinding binding;
     private static final String KEY_CODE = "Parking Spot Code";
     private static final String KEY_NAME = "Name";
     private static final String KEY_PLATE = "Plate Number";
+    private static final String KEY_TIME = "Time Entered";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    Calendar current = Calendar.getInstance();
+    SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy | hh:mm:ss");
 
     EditText etCode, etName, etPlate;
 
@@ -70,12 +78,27 @@ public class HomeFragment extends Fragment {
         Map<String, Object> lot = new HashMap<>();
 
         lot.put(KEY_NAME, name);
+        lot.put("Occupied", true);
         lot.put(KEY_PLATE, plate);
+        lot.put(KEY_TIME, current);
+
+
+
+        Map<String, Object> record = new HashMap<>();
+
+
+        record.put(KEY_NAME, name);
+        record.put(KEY_CODE, code);
+        record.put(KEY_PLATE, plate);
+        record.put(KEY_TIME, current);
 
         db.collection("PARKING").document(code).set(lot).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(getContext(), "Thank You for Submitting", Toast.LENGTH_SHORT).show();
+                etCode.setText("");
+                etName.setText("");
+                etPlate.setText("");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -83,6 +106,8 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), "Process Failed, Please Try Again or call a Representative", Toast.LENGTH_SHORT).show();
             }
         });
+
+        db.collection("RECORDS").add(record);
     }
 
     @Override
