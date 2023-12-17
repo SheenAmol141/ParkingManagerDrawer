@@ -1,17 +1,25 @@
 package com.sheenjoshuaamol.parkingmanagerdrawer.receipts;
 
 public class ReceiptsModel {
-    String code, name, plate, time;
+    String code, name, plate, time, search;
     public ReceiptsModel () {
     }
 
-    public ReceiptsModel(String code, String name, String plate, String time) {
+    public ReceiptsModel(String name, String code, String plate, String search, String time) {
         this.code = code;
         this.name = name;
         this.plate = plate;
         this.time = time;
+        this.search = search;
     }
 
+    public String getsearch() {
+        return search;
+    }
+
+    public void setsearch(String code) {
+        this.search = search;
+    }
     public String getCode() {
         return code;
     }

@@ -90,6 +90,7 @@ public class HomeFragment extends Fragment {
 
 
         record.put(KEY_NAME, name);
+        record.put("search", name.toLowerCase());
         record.put(KEY_CODE, code);
         record.put(KEY_PLATE, plate);
         record.put(KEY_TIME, String.valueOf(new Date()));

@@ -26,6 +26,7 @@ import com.sheenjoshuaamol.parkingmanagerdrawer.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ReceiptsFragment extends Fragment {
 
@@ -79,8 +80,57 @@ public class ReceiptsFragment extends Fragment {
 
 
         //search bar
+        SearchView svReceipts = getActivity().findViewById(R.id.svReceipts);
+        svReceipts.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //called on search button pressed
+                searchData(query.toLowerCase(Locale.ROOT));
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //called on text change
+                Toast.makeText(getContext(), "alo", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
     }
+
+    private void searchData(String s) {
+        db.collection("RECORDS").whereEqualTo("search", s.toLowerCase())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    //called when search success
+                        Toast.makeText(getContext(), "Search successful", Toast.LENGTH_SHORT).show();
+                        modelList.clear();
+                        for (DocumentSnapshot doc : task.getResult()) {
+                            ReceiptsModel model = new ReceiptsModel(doc.getString("name"),
+                                    doc.getString("code"),
+                                    doc.getString("plate"),
+                                    doc.getString("search"),
+                                    doc.getString("time"));
+
+                            modelList.add(model);
+                        }
+
+                        //adapter
+                        adapter = new ReceiptsAdapter(ReceiptsFragment.this, modelList, getContext());
+                        rvReceipts.setAdapter(adapter);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    //called when search failed
+                        Toast.makeText(getContext(), "Search failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     private void showData() {
         db.collection("RECORDS")
                 .get()
@@ -93,7 +143,10 @@ public class ReceiptsFragment extends Fragment {
                             ReceiptsModel model = new ReceiptsModel(doc.getString("name"),
                                     doc.getString("code"),
                                     doc.getString("plate"),
+                                    doc.getString("search"),
                                     doc.getString("time"));
+
+
                             modelList.add(model);
                         }
 

@@ -45,7 +45,9 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsViewHolder> {
                 String code = modelList.get(position).getCode();
                 String plate = modelList.get(position).getPlate();
                 String timeEntered = modelList.get(position).getTimeEntered();
-                Toast.makeText(itemView.getContext(), name+"\n"+code+"\n"+plate+"\n"+timeEntered, Toast.LENGTH_SHORT).show();
+
+
+
             }
 
             @Override
@@ -62,7 +64,7 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsViewHolder> {
         holder.tvName.setText(modelList.get(position).getName());
         holder.tvCode.setText(modelList.get(position).getCode());
         holder.tvPlate.setText(modelList.get(position).getPlate());
-        holder.tvTimeEntered.setText(modelList.get(position).getTimeEntered());
+        holder.tvTimeEntered.setText("Time Entered: " + modelList.get(position).getTimeEntered());
     }
 
     @Override
