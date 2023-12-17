@@ -1,18 +1,18 @@
 package com.sheenjoshuaamol.parkingmanagerdrawer.ui.parklist;
 
-import java.util.Calendar;
-
 public class Spot {
     String code, name;
-    Calendar time;
+    String time;
+    Boolean Occupied;
 
     Spot() {
         //EMPTY
     }
-    Spot(String code, String name, Calendar time) {
+    Spot(String code, String name, String time, Boolean Occupied) {
         this.code = code;
         this.name = name;
         this.time = time;
+        this.Occupied = Occupied;
     }
 
     public String getCode() {
@@ -23,7 +23,11 @@ public class Spot {
         return name;
     }
 
-    public Calendar getTime() {
+    public String getTime() {
         return time;
     }
+    public Boolean getOccupied() {
+        return Occupied;
+    }
+
 }

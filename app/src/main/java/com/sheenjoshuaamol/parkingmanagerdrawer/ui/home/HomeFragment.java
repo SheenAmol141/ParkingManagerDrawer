@@ -23,6 +23,7 @@ import com.sheenjoshuaamol.parkingmanagerdrawer.databinding.FragmentHomeBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,8 +34,8 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private static final String KEY_CODE = "code";
     private static final String KEY_NAME = "name";
-    private static final String KEY_PLATE = "Plate Number";
-    private static final String KEY_TIME = "Time Entered";
+    private static final String KEY_PLATE = "plate";
+    private static final String KEY_TIME = "time";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     Calendar current = Calendar.getInstance();
     SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy | hh:mm:ss");
@@ -81,7 +82,7 @@ public class HomeFragment extends Fragment {
         lot.put(KEY_NAME, name);
         lot.put("Occupied", true);
         lot.put(KEY_PLATE, plate);
-        lot.put(KEY_TIME, current);
+        lot.put(KEY_TIME, String.valueOf(new Date()));
 
 
 
@@ -91,7 +92,7 @@ public class HomeFragment extends Fragment {
         record.put(KEY_NAME, name);
         record.put(KEY_CODE, code);
         record.put(KEY_PLATE, plate);
-//        record.put(KEY_TIME, format.format(current).toString());
+        record.put(KEY_TIME, String.valueOf(new Date()));
 
         db.collection("PARKING").document(code).set(lot).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
