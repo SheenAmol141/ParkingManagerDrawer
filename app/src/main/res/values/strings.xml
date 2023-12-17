@@ -46,7 +46,8 @@
     <string name="time_entered">Time Entered</string>
     <string name="plate_number">Plate Number</string>
     <string name="time_exited">Time Exited</string>
-    <string name="per_hour">Price per Hour: ₱15.00</string>
+    <string name="per_hour">Price for First 2 Hours: ₱30.00 + ₱5.00 per hour</string>
     <string name="total_time_parked">Total Time Parked</string>
     <string name="total_price">Total Price</string>
+    <string name="customer_payed_upload_receipt_to_database">Customer Payed - Upload Receipt to Database</string>
 </resources>
