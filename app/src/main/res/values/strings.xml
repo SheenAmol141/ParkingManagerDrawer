@@ -43,4 +43,6 @@
     <string name="code">CODE</string>
     <string name="time">TIME</string>
     <string name="name">NAME</string>
+    <string name="time_entered">Time Entered</string>
+    <string name="plate_number">Plate Number</string>
 </resources>
