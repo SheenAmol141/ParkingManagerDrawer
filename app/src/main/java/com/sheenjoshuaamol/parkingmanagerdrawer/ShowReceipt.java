@@ -68,9 +68,11 @@ public class ShowReceipt extends AppCompatActivity {
 
         String price;
 
+        Long c;
+
         if (printDifference(entered, new Date()) >= 2){
             int pay;
-            Long c = printDifference(entered, new Date());
+            c = printDifference(entered, new Date());
                 c = c - 3;
              pay = 30;
                 while (c > 0) {
@@ -98,7 +100,7 @@ public class ShowReceipt extends AppCompatActivity {
                 record.put("Plate Number", map.get("plate"));
                 record.put("Time Entered", map.get("timeEntered"));
                 record.put("Time Exited", format.format(new Date()));
-                record.put("Total Hours", totalTime.getText().toString() + " Hours");
+                record.put("Total Hours", calc(entered) + " Hours");
                 record.put("Total Payment",  price+".00");
                 db.collection("RECEIPTS PAYED").add(record).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -120,6 +122,21 @@ public class ShowReceipt extends AppCompatActivity {
 
 
 
+    }
+    public int calc(Date entered) {
+        if (printDifference(entered, new Date()) >= 2){
+            int pay;
+            Long c = printDifference(entered, new Date());
+            c = c - 3;
+            pay = 30;
+            while (c > 0) {
+                c = c - 1;
+                pay = pay + 5;
+            }
+            return pay;
+        } else {
+            return 30;
+        }
     }
     //1 minute = 60 seconds
 //1 hour = 60 x 60 = 3600
