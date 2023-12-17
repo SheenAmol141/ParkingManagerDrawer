@@ -1,7 +1,10 @@
 package com.sheenjoshuaamol.parkingmanagerdrawer.receipts;
 
+import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +14,17 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.helper.widget.Layer;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.sheenjoshuaamol.parkingmanagerdrawer.MainActivity;
 import com.sheenjoshuaamol.parkingmanagerdrawer.R;
+import com.sheenjoshuaamol.parkingmanagerdrawer.ShowReceipt;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsViewHolder> {
 
@@ -46,8 +57,16 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsViewHolder> {
                 String plate = modelList.get(position).getPlate();
                 String timeEntered = modelList.get(position).getTimeEntered();
 
+                HashMap<String, String> map =  new HashMap<String, String>();
+                map.put("name", name);
+                map.put("code", code);
+                map.put("plate", plate);
+                map.put("timeEntered", timeEntered);
 
+                Intent intent = new Intent(view.getContext(), ShowReceipt.class);
+                intent.putExtra("map", map);
 
+                view.getContext().startActivity(intent);
             }
 
             @Override

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowReceipt">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="40dp"
+        app:cardBackgroundColor="#EFEFEF"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="2dp"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="40dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:text="@string/name"
+                android:textColor="@color/mainblue"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCode"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/code"
+                android:textColor="@color/mainblue" />
+            <TextView
+                android:id="@+id/tvPlate"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plate_number"
+                android:textColor="@color/mainblue"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/tvTimeEntered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_entered"
+                android:textColor="@color/mainblue" />
+            <TextView
+                android:id="@+id/tvTimeExited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_exited"
+                android:textColor="@color/mainblue"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/tvTotalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_time_parked"
+                android:textColor="@color/mainblue" />
+            <TextView
+                android:id="@+id/tvPerHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/per_hour"
+                android:textColor="@color/mainblue"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/tvTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:text="@string/total_price"
+                android:textColor="@color/mainblue"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

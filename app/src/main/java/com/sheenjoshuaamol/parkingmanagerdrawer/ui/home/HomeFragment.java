@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class HomeFragment extends Fragment {
@@ -37,6 +38,10 @@ public class HomeFragment extends Fragment {
     private static final String KEY_PLATE = "plate";
     private static final String KEY_TIME = "time";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    SimpleDateFormat dateFormat = new SimpleDateFormat(
+            "EEE MMM dd HH:mm:ss 'GMT'XXX yyyy",
+            Locale.US
+    );
     Calendar current = Calendar.getInstance();
     SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy | hh:mm:ss");
 
@@ -82,7 +87,7 @@ public class HomeFragment extends Fragment {
         lot.put(KEY_NAME, name);
         lot.put("Occupied", true);
         lot.put(KEY_PLATE, plate);
-        lot.put(KEY_TIME, String.valueOf(new Date()));
+        lot.put(KEY_TIME, String.valueOf(dateFormat.format(new Date())));
 
 
 
@@ -93,7 +98,7 @@ public class HomeFragment extends Fragment {
         record.put("search", name.toLowerCase());
         record.put(KEY_CODE, code);
         record.put(KEY_PLATE, plate);
-        record.put(KEY_TIME, String.valueOf(new Date()));
+        lot.put(KEY_TIME, String.valueOf(dateFormat.format(new Date())));
 
         db.collection("PARKING").document(code).set(lot).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
