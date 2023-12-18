@@ -25,6 +25,8 @@ public class SwitchMode extends AppCompatActivity {
         //IMPORTANT
         analytics = FirebaseAnalytics.getInstance(this);
 
+        getSupportActionBar().hide();
+
 
 
 

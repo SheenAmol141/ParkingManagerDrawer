@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="5px"
+    android:background="@color/ic_launcher_background"
     tools:context=".ShowReceipt">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="40dp"
-        app:cardBackgroundColor="#EFEFEF"
+        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="30dp"
         app:cardElevation="2dp"
         tools:layout_editor_absoluteX="40dp"
         tools:layout_editor_absoluteY="40dp">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,47 +55,52 @@
                 android:layout_height="wrap_content"
                 android:text="@string/code"
                 android:textColor="@color/mainblue"
-                android:textSize="17dp"/>
+                android:textSize="17dp" />
+
             <TextView
                 android:id="@+id/tvPlate"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="@string/plate_number"
-                android:textSize="17dp"
                 android:textColor="@color/mainblue"
-                android:layout_marginBottom="10dp"/>
+                android:textSize="17dp" />
 
             <TextView
                 android:id="@+id/tvTimeEntered"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/time_entered"
-                android:textSize="17dp"
-                android:textColor="@color/mainblue" />
+                android:textColor="@color/mainblue"
+                android:textSize="17dp" />
+
             <TextView
                 android:id="@+id/tvTimeExited"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="@string/time_exited"
-                android:textSize="17dp"
                 android:textColor="@color/mainblue"
-                android:layout_marginBottom="10dp"/>
+                android:textSize="17dp" />
+
             <TextView
                 android:id="@+id/tvTotalTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dp"
                 android:text="@string/total_time_parked"
-                android:textColor="@color/mainblue" />
+                android:textColor="@color/mainblue"
+                android:textSize="17dp" />
+
             <TextView
                 android:id="@+id/tvPerHour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="@string/per_hour"
-                android:textSize="17dp"
                 android:textColor="@color/mainblue"
-                android:layout_marginBottom="10dp"/>
+                android:textSize="17dp" />
+
             <TextView
                 android:id="@+id/tvTotalPrice"
                 android:layout_width="wrap_content"
@@ -102,6 +110,7 @@
                 android:textColor="@color/mainblue"
                 android:textSize="22dp"
                 android:textStyle="bold" />
+
             <Button
                 android:id="@+id/payed"
                 android:layout_width="wrap_content"

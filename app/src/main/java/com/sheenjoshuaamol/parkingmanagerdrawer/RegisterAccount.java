@@ -102,7 +102,7 @@ public class RegisterAccount extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success
                                         analytics.logEvent("createUserWithEmail_success", null);
-                                        Toast.makeText(RegisterAccount.this, "Registered Successfully, redirecting to Operator Screen", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterAccount.this, "Registered Successfully, redirecting to Sign in Screen", Toast.LENGTH_SHORT).show();
 
                                         TimerTask timer = new TimerTask() {
                                             @Override

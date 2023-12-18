@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="5px"
+    android:background="@color/ic_launcher_background"
     tools:context=".ui.home.HomeFragment">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="#EFEFEF"
+        android:layout_width="367dp"
+        android:layout_height="242dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -28,9 +30,9 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Spinner
+                android:id="@+id/spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner" />
+                android:layout_height="wrap_content" />
 
             <EditText
                 android:id="@+id/fireinputName"
@@ -52,8 +54,12 @@
                 android:id="@+id/submitLot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/mainblue"
                 android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:textStyle="bold"
                 app:cornerRadius="100dp" />
 
         </LinearLayout>
@@ -66,7 +72,7 @@
         android:padding="30dp"
         android:text="Please input your\nParking Spot Code, Name, and Plate Number"
         android:textAlignment="center"
-        android:textColor="@color/mainblue"
+        android:textColor="@color/white"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
