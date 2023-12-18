@@ -19,6 +19,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ShowReceipt extends AppCompatActivity {
 
@@ -106,6 +108,12 @@ public class ShowReceipt extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(ShowReceipt.this, "Receipt Uploaded! Thank you!", Toast.LENGTH_SHORT).show();
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                finish();
+                            }
+                        }, 500);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

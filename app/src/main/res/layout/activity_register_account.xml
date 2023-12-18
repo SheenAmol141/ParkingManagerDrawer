@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainblue"
     tools:context=".RegisterAccount">
 
     <TextView
@@ -12,8 +13,10 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
         android:text="@string/add_an_operator_account"
-        android:textColor="@color/mainblue"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="40dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -26,7 +29,10 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:backgroundTint="#FFFFFF"
         android:hint="@string/email"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#3EFFFFFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -37,8 +43,11 @@
         android:id="@+id/etRegisterPassword"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
         android:hint="@string/pas_sword"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#3EFFFFFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -49,8 +58,11 @@
         android:id="@+id/etRegisterConfirmPassword"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
         android:hint="@string/confirm_password"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#3EFFFFFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -62,8 +74,11 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:backgroundTint="#FFFFFF"
         android:hint="@string/insert_master_password"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#3EFFFFFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -74,55 +89,64 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/mainblue"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
         android:text="@string/add_account"
-        android:textColor="@color/white"
+        android:textColor="@color/mainblue"
         android:textSize="13dp"
         android:textStyle="bold"
         app:cornerRadius="100dp"
+        app:iconTint="@color/mainblue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etMaster" />
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:visibility="invisible"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/submit" />
-    <Button
-        android:id="@+id/login"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/mainblue"
-        android:text="@string/login_instead"
-        android:textColor="@color/white"
-        android:textSize="13dp"
-        android:textStyle="bold"
-        app:cornerRadius="100dp"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progressBar" />
-    <Button
-        android:id="@+id/switchmode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/mainblue"
-        android:text="@string/switch_mode"
-        android:textColor="@color/white"
-        android:textSize="13dp"
-        android:textStyle="bold"
-        app:cornerRadius="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar">
 
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login" />
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/login_instead"
+            android:textColor="@color/mainblue"
+            android:textSize="13dp"
+            android:textStyle="bold"
+
+            app:cornerRadius="100dp"
+            app:iconTint="@color/mainblue" />
+
+        <Button
+            android:id="@+id/switchmode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="@string/switch_mode"
+            android:textColor="@color/mainblue"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            app:cornerRadius="100dp"
+
+            app:iconTint="@color/mainblue" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,22 @@
 package com.sheenjoshuaamol.parkingmanagerdrawer.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,9 +33,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-
+    private String get;
 
     private FragmentHomeBinding binding;
     private static final String KEY_CODE = "code";
@@ -61,22 +66,31 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
-        etCode = getView().findViewById(R.id.fireinputCode);
+
         etName = getView().findViewById(R.id.fireinputName);
         etPlate = getView().findViewById(R.id.fireinputPlate);
+
+        //spinner
+        Spinner spinner = getView().findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getContext(), R.array.spinnerStrings, android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(this);
 
 
         getView().findViewById(R.id.submitLot).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveLot(v);
+                Log.d("TAGNEWTAG", "onClick: " + get);
+                saveLot(v, get);
+
             }
         });
 
     }
 
-    public void saveLot(View v) {
-        String code = etCode.getText().toString();
+    public void saveLot(View v, String spin) {
+        String code = spin;
         String name = etName.getText().toString();
         String plate = etPlate.getText().toString();
 
@@ -104,7 +118,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(getContext(), "Thank You for Submitting", Toast.LENGTH_SHORT).show();
-                etCode.setText("");
+
                 etName.setText("");
                 etPlate.setText("");
             }
@@ -123,4 +137,17 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        get = text;
+        Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
+ }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
 }

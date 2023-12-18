@@ -40,6 +40,8 @@ public class RegisterAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_account);
 
+        getSupportActionBar().hide();
+
         SharedPreferences SP = getSharedPreferences("MASTER", MODE_PRIVATE);
 
         password = findViewById(R.id.etRegisterPassword);

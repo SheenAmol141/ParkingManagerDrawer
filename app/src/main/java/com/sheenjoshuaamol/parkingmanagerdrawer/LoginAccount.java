@@ -54,6 +54,8 @@ public class LoginAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_account);
 
+        getSupportActionBar().hide();
+
 
         mAuth = FirebaseAuth.getInstance();
         analytics = FirebaseAnalytics.getInstance(this);
@@ -110,7 +112,7 @@ public class LoginAccount extends AppCompatActivity {
                                         startActivity(new Intent(LoginAccount.this, OperatorActivity.class));
                                         load.setVisibility(View.INVISIBLE);
                                     }
-                                }, 2000);
+                                }, 1000);
 
                             } else {
                                 // If sign in fails, display a message to the user.

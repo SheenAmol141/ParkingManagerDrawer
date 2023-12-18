@@ -15,14 +15,35 @@
 
 
     <string-array name="spinnerStrings">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>A1</item>
+        <item>A2</item>
+        <item>A3</item>
+        <item>A4</item>
+        <item>A5</item>
+        <item>A6</item>
+        <item>A7</item>
+        <item>A8</item>
+        <item>A9</item>
+
+        <item>B1</item>
+        <item>B2</item>
+        <item>B3</item>
+        <item>B4</item>
+        <item>B5</item>
+        <item>B6</item>
+        <item>B7</item>
+        <item>B8</item>
+        <item>B9</item>
+
+        <item>C1</item>
+        <item>C2</item>
+        <item>C3</item>
+        <item>C4</item>
+        <item>C5</item>
+        <item>C6</item>
+        <item>C7</item>
+        <item>C8</item>
+        <item>C9</item>
     </string-array>
     <!-- SWITCH -->
     <string name="Switch">Are you an</string>
@@ -47,7 +68,7 @@ Tap next or swipe the screen to the left to continue.</string>
     <string name="pas_sword">Password</string>
     <string name="email">Email</string>
     <string name="login">Login</string>
-    <string name="login_as_operator">Login as Operator</string>
+    <string name="login_as_operator">Sign in</string>
     <string name="title_activity_operator">OperatorActivity</string>
     <string name="options">Options</string>
     <string name="switch_mode">Switch Mode</string>
