@@ -19,13 +19,15 @@
     <string name="cust">Customer?</string>
 
     <!--  ONBOARDING -->
-    <string name="onboard_title_1">Title 1</string>
-    <string name="onboard_title_2">Title 2</string>
-    <string name="onboard_title_3">Title 3</string>
+    <string name="onboard_title_1">Welcome to Park Pass!</string>
+    <string name="onboard_title_2">Easy to use!</string>
+    <string name="onboard_title_3">Hassle free exit!</string>
 
-    <string name="onboard_desc_1">DESC 1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed velit sagittis dui venenatis bibendum eget non lectus. In dolor mauris, molestie sit amet elit a, placerat feugiat erat. Etiam sollicitudin eleifend sapien id vulputate. Sed ut dolor ut dolor lobortis hendrerit at id magna. </string>
-    <string name="onboard_desc_2">DESC 2Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed velit sagittis dui venenatis bibendum eget non lectus. In dolor mauris, molestie sit amet elit a, placerat feugiat erat. Etiam sollicitudin eleifend sapien id vulputate. Sed ut dolor ut dolor lobortis hendrerit at id magna. </string>
-    <string name="onboard_desc_3">DESC 3Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed velit sagittis dui venenatis bibendum eget non lectus. In dolor mauris, molestie sit amet elit a, placerat feugiat erat. Etiam sollicitudin eleifend sapien id vulputate. Sed ut dolor ut dolor lobortis hendrerit at id magna. </string>
+    <string name="onboard_desc_1">Hey there! 🚗 Welcome to EasyPark, your hassle-free parking solution. Let\'s get you started!\n
+\n
+Tap next or swipe the screen to the left to continue.</string>
+    <string name="onboard_desc_2">Enter your parking spot code, name, and plate number. Done.</string>
+    <string name="onboard_desc_3">When exiting, just tell the operator the name you inputted and pay.</string>
     <string name="add_an_operator_account">Add an Operator Account</string>
     <string name="insert_master_password">INSERT MASTER PASSWORD</string>
     <string name="add_account">Add Account</string>

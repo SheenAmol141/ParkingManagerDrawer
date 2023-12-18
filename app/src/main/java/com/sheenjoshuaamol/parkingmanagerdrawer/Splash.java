@@ -30,17 +30,21 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
 
-
+                if (SP.getBoolean("opened", false)) {
                     if (Sa.getInt("Switch", 3) == 1) {
                         startActivity(new Intent(Splash.this, LoginAccount.class));
                     } else if (Sa.getInt("Switch", 3) == 0) {
                         startActivity(new Intent(Splash.this, MainActivity.class));
                     } else {
-                        startActivity(new Intent(Splash.this, OnboardingActivity.class));
-                        SP.edit().putBoolean("opened", true).apply();
+                        startActivity(new Intent(Splash.this, SwitchMode.class));
+
                     }
+                }else {
+                    startActivity(new Intent(Splash.this, OnboardingActivity.class));
+                }
+
             }
         };
-        new Timer().schedule(timer, 2000);
+        new Timer().schedule(timer, 1000);
     }
 }

@@ -77,6 +77,8 @@ public class OnboardingActivity extends AppCompatActivity {
                             pager.setCurrentItem(position + 1, true);
                         } else {
                             startActivity(new Intent(OnboardingActivity.this, SwitchMode.class));
+                            SharedPreferences SP = getSharedPreferences("First Open", MODE_PRIVATE);
+                            SP.edit().putBoolean("opened", true).apply();
                             finish();
                         }
                     }

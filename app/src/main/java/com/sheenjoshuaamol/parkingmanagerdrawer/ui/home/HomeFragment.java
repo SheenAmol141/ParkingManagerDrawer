@@ -98,7 +98,7 @@ public class HomeFragment extends Fragment {
         record.put("search", name.toLowerCase());
         record.put(KEY_CODE, code);
         record.put(KEY_PLATE, plate);
-        lot.put(KEY_TIME, String.valueOf(dateFormat.format(new Date())));
+        record.put(KEY_TIME, String.valueOf(dateFormat.format(new Date())));
 
         db.collection("PARKING").document(code).set(lot).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

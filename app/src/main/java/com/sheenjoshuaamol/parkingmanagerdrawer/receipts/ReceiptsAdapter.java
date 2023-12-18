@@ -77,6 +77,7 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsViewHolder> {
         return viewHolder;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ReceiptsViewHolder holder, int position) {
     //bind views / set data

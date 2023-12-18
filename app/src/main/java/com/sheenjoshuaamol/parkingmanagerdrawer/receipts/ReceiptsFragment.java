@@ -7,9 +7,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -76,7 +79,19 @@ public class ReceiptsFragment extends Fragment {
         //show data in recycler view
         showData();
 
+        //swipe delete
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
 
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            }
+        }).attachToRecyclerView(rvReceipts);
 
 
         //search bar
@@ -92,11 +107,29 @@ public class ReceiptsFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 //called on text change
-                Toast.makeText(getContext(), "alo", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
     }
+
+
+
+//    public void deleteData(int position) {
+//        db.collection("RECORDS").document(modelList.get(position).getId())
+//                .delete()
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void unused) {
+//                        Toast.makeText(getContext(), "Record Deletion Finished - Reloading", Toast.LENGTH_SHORT).show();
+//                        showData();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(getContext(), "Record Deletion Failed", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//    }
 
     private void searchData(String s) {
         db.collection("RECORDS").whereEqualTo("search", s.toLowerCase())
@@ -131,12 +164,16 @@ public class ReceiptsFragment extends Fragment {
                 });
     }
 
+
+
+
     private void showData() {
         db.collection("RECORDS")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        modelList.clear();
                         Toast.makeText(getContext(), "Records Retrieved", Toast.LENGTH_SHORT).show();
 
                         for (DocumentSnapshot doc : task.getResult()) {
@@ -145,7 +182,7 @@ public class ReceiptsFragment extends Fragment {
                                     doc.getString("plate"),
                                     doc.getString("search"),
                                     doc.getString("time"));
-
+                            Log.d("TAGTime", "onComplete: " + doc.getString("time"));
 
                             modelList.add(model);
                         }

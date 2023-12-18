@@ -51,4 +51,6 @@ public class ReceiptsModel {
     public void setTimeEntered(String time) {
         this.time = time;
     }
+
+
 }
