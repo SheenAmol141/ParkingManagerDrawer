@@ -33,6 +33,7 @@
         android:hint="@string/email"
         android:textColor="#FFFFFF"
         android:textColorHint="#3EFFFFFF"
+        android:inputType="text"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

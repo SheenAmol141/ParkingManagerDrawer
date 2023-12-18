@@ -34,6 +34,7 @@
         android:textColorHint="#3EFFFFFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="text"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView4" />
@@ -45,6 +46,7 @@
         android:backgroundTint="#FFFFFF"
         android:hint="@string/pas_sword"
         android:textColor="#FFFFFF"
+        android:inputType="textPassword"
         android:textColorHint="#3EFFFFFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
