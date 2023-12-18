@@ -9,10 +9,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,11 +32,15 @@ public class ShowReceipt extends AppCompatActivity {
 
 
 
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_receipt);
+
+
 
         //get intent extra data
         HashMap<String, String> map = (HashMap<String, String>) getIntent()
@@ -107,7 +117,7 @@ public class ShowReceipt extends AppCompatActivity {
                 db.collection("RECEIPTS PAYED").add(record).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(ShowReceipt.this, "Receipt Uploaded! Thank you!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ShowReceipt.this, "Receipt Uploaded! Redirecting back to Parking Spots", Toast.LENGTH_SHORT).show();
                         new Timer().schedule(new TimerTask() {
                             @Override
                             public void run() {
@@ -122,6 +132,20 @@ public class ShowReceipt extends AppCompatActivity {
                     }
                 });
 
+
+                // Build the query based on the collection and field
+                Query queryReference = db.collection("RECORDS")
+                        .whereEqualTo("name", map.get("name"));
+                //delete matching data
+                queryReference.get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            document.getReference().delete();
+                        }
+                    } else {
+                        // Handle error
+                    }
+                });
 
 
 

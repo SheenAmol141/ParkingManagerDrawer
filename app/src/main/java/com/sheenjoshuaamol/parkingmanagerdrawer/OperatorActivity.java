@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.sheenjoshuaamol.parkingmanagerdrawer.databinding.ActivityOperatorBinding;
+import com.sheenjoshuaamol.parkingmanagerdrawer.receipts.ReceiptsFragment;
 import com.sheenjoshuaamol.parkingmanagerdrawer.ui.home.HomeFragment;
 import com.sheenjoshuaamol.parkingmanagerdrawer.ui.parklist.ParkListFragment;
 
@@ -89,5 +90,12 @@ public class OperatorActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_operator);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 }
