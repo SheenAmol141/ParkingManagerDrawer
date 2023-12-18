@@ -27,26 +27,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner" />
+
             <EditText
                 android:id="@+id/fireinputCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/parking_spot_code"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="#14273A" />
 
             <EditText
                 android:id="@+id/fireinputName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="#14273A" />
 
             <EditText
                 android:id="@+id/fireinputPlate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/plate_number"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="#14273A" />
 
             <Button
                 android:id="@+id/submitLot"

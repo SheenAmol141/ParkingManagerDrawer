@@ -34,13 +34,12 @@ public class SpotAdapter extends FirestoreRecyclerAdapter<Spot, SpotAdapter.Spot
     @Override
     protected void onBindViewHolder(@NonNull SpotHolder holder, int position, @NonNull Spot model) {
 
-        holder.tvName.setText(model.getName());
-        holder.tvTime.setText(model.getTime());
+        holder.tvName.setText("Name: " + model.getName());
+        holder.tvTime.setText("Time Entered: " + model.getTime());
         if (model.getOccupied()) {
             holder.tvCode.setText(model.getCode() + " - Occupied");
             holder.check.setImageResource(R.drawable.baseline_car_rental_24);
         } else {
-            holder.tvCode.setText(model.getCode());
             holder.tvCode.setText(model.getCode() + " - Available");
             holder.check.setImageResource(R.drawable.baseline_crop_free_24);
         }

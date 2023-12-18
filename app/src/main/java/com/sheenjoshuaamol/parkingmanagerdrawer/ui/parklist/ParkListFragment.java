@@ -79,7 +79,7 @@ public class ParkListFragment extends Fragment {
         mapfree.put("name", "");
         mapfree.put("Occupied", false);
         mapfree.put("plate", "");
-        mapfree.put("time", String.valueOf(new Date()));
+        mapfree.put("time", "");
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
