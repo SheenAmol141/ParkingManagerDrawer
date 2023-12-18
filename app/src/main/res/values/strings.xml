@@ -52,4 +52,6 @@ Tap next or swipe the screen to the left to continue.</string>
     <string name="total_time_parked">Total Time Parked</string>
     <string name="total_price">Total Price</string>
     <string name="customer_payed_upload_receipt_to_database">Customer Payed - Upload Receipt to Database</string>
+    <string name="parking_spot_code">Parking Spot Code</string>
+    <string name="submit">Submit</string>
 </resources>

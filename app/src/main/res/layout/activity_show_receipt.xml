@@ -21,15 +21,29 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <TextView
-                android:id="@+id/tvName"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
-                android:text="@string/name"
-                android:textColor="@color/mainblue"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_receipt_45" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="6dp"
+                    android:text="@string/name"
+                    android:textColor="@color/mainblue"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/tvCode"
