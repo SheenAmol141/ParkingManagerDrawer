@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/grey"
     android:orientation="vertical"
     tools:context=".receipts.ReceiptsFragment">
 
@@ -14,9 +15,9 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReceipts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello"
-        android:id="@+id/rvReceipts"/>
+        android:text="Hello" />
 
 </LinearLayout>

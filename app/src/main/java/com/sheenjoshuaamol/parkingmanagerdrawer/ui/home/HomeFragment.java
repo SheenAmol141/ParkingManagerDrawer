@@ -142,7 +142,6 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
         get = text;
-        Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
  }
 
     @Override

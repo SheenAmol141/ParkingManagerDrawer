@@ -88,7 +88,10 @@ public class ReceiptsFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 //called on search button pressed
-                searchData(query.toLowerCase(Locale.ROOT));
+                    searchData(query.toLowerCase(Locale.ROOT));
+
+
+
                 return false;
             }
 

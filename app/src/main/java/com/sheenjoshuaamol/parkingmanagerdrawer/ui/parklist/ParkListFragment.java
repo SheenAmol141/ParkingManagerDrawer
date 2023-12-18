@@ -64,7 +64,7 @@ public class ParkListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rvParkList = getView().findViewById(R.id.rvParkList);
 
-        Query query = parkingCollection.orderBy("Occupied", Query.Direction.DESCENDING);
+        Query query = parkingCollection.orderBy("code", Query.Direction.ASCENDING);
         adapter = new SpotAdapter(new FirestoreRecyclerOptions.Builder<Spot>().setQuery(query, Spot.class).build());
 
 
