@@ -19,14 +19,22 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.sheenjoshuaamol.parkingmanagerdrawer.R;
 import com.sheenjoshuaamol.parkingmanagerdrawer.databinding.FragmentHomeBinding;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -51,6 +59,8 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy | hh:mm:ss");
 
     EditText etCode, etName, etPlate;
+    ArrayList<String> stringListRemove = new ArrayList<>();
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,23 +80,97 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         etName = getView().findViewById(R.id.fireinputName);
         etPlate = getView().findViewById(R.id.fireinputPlate);
 
-        //spinner
-        Spinner spinner = getView().findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getContext(), R.array.spinnerStrings, android.R.layout.simple_spinner_item);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
-        spinner.setOnItemSelectedListener(this);
+
+        //query all documents that have occupied set to true
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
+
+        String[] stockArr = new String[stringListRemove.size()];
+        stockArr = stringListRemove.toArray(stockArr);
+        Log.d("TAGARRAY", "onViewCreated: " + stringListRemove.size() + Arrays.toString(stockArr));
+
+
+        loadNewAdapter();
+
+       //submit button
         getView().findViewById(R.id.submitLot).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("TAGNEWTAG", "onClick: " + get);
                 saveLot(v, get);
-
+                loadNewAdapter();
             }
         });
 
+    }
+
+//    private static addItemToRemove(String id) {
+//        String[] arr = {};
+//        Log.d("TAGREMOVE", Arrays.toString(stringArray));
+//        return arr;
+//    }
+
+    private void loadNewAdapter(){
+        CollectionReference parkingRef = db.collection("PARKING");
+        Task<QuerySnapshot> occupiedQuery = parkingRef
+                .whereEqualTo("Occupied", true)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot document : task.getResult()) {
+                                String documentId = document.getId();
+                                stringListRemove.add(documentId);
+                                // Add documentId to your String[]
+                                // ...
+                            }
+                            String[] stockArr = new String[stringListRemove.size()];
+                            stockArr = stringListRemove.toArray(stockArr);
+                            Log.d("TAGNEWARRAY", "onComplete: "+ Arrays.toString(stockArr));
+                            //load Spinner
+                            loadSpinner(stockArr);
+                        } else {
+                            Log.w("TAG", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+    private void loadSpinner(String[] removestring) {
+        //spinner
+        String[] removestringthis = removestring;
+
+
+
+        String[] arraystring = getResources().getStringArray(R.array.spinnerStrings);;
+
+
+        //remove items from removestringthis in arraystring
+        int j = 0;
+        for (int i = 0; i < arraystring.length; i++) {
+            if (!Arrays.asList(removestringthis).contains(arraystring[i])) {
+                arraystring[j++] = arraystring[i]; // Shift remaining elements
+            }
+        }
+        arraystring = Arrays.copyOf(arraystring, j); // Trim the array to new size
+
+
+
+
+
+
+        Spinner spinner = getView().findViewById(R.id.spinner);
+//        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getContext(), arr, android.R.layout.simple_spinner_item);
+
+
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arraystring);
+
+
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
     public void saveLot(View v, String spin) {
