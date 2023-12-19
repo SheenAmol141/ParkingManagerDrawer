@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/parkListFragment"
         android:name="com.sheenjoshuaamol.parkingmanagerdrawer.ui.parklist.ParkListFragment"
-        android:label="Parked List"
+        android:label="Parking Spots"
         tools:layout="@layout/fragment_park_list" />
     <fragment
         android:id="@+id/receiptsFragment"
